@@ -4,7 +4,7 @@ if (Meteor.isClient) {
 
     Template.comments.helpers({
         commentList: function () {
-            return Comments.find();
+            return Comments.find({}, {sort: {createdAt: -1}});
         }
     });
 

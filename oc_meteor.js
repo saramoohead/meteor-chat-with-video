@@ -20,6 +20,26 @@ if (Meteor.isClient) {
             });
 
             event.target.commentText.value = "";
+        },
+
+        "click .delete": function () {
+            var commentId = this._id;
+
+            swal({
+                title: "Delete comment?",
+                type: "warning",
+                text: "You can't get it back once it's gone.",
+                confirmButtonText: "Delete",
+                showCancelButton: true,
+                allowOutsideClick: true
+            },
+            function(response){
+                if (response === true) {
+                    Comments.remove(commentId);
+                    swal("Deleted!", "Comment deleted.", "success");
+                } else {
+                }
+            });
         }
     });
 

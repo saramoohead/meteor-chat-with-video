@@ -5,7 +5,7 @@
 <body>
   <div class="container">
 
-    {{> loginButtons}}
+    <span class="login">{{> loginButtons}}</span>
 
     {{#if currentUser}}
       <form class="new-comment">
@@ -22,9 +22,11 @@
   <ul>
     {{#each commentList}}
       <li>
-        <p>{{commentText}}</p>
-        <p class="user-details">Posted by: {{username}}, {{createdAt}}</p>
-        <button class="delete">&times;</button>
+        <p>
+          {{commentText}}
+          <button class="delete">&times;</button>
+        </p>
+        <p class="user-details">Posted by: {{username}} on {{createdAt}}</p>
       </li>
     {{/each}}
   </ul>

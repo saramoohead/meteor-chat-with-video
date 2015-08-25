@@ -42,9 +42,9 @@ h1 {
   margin-right: 1em;
 }
 
-h5 {
-  font-size: .8em;
-  padding: 10px 10px;
+.login {
+  font-size: 1.1em;
+  padding: 15px 15px;
   display: inline-block;
 }
 
@@ -94,12 +94,13 @@ li .text {
   margin-left: 10px;
 }
 
-li.checked {
-  color: #888;
+li .user-details {
+  font-size: .6em;
+  margin-left: 10px;
 }
 
-li.checked .text {
-  text-decoration: line-through;
+li.checked {
+  color: #888;
 }
 
 li.private {

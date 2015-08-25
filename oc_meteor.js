@@ -16,7 +16,9 @@ if (Meteor.isClient) {
 
             Comments.insert({
                 commentText: commentText,
-                createdAt: new Date()
+                createdAt: new Date(),
+                owner: Meteor.userId(),
+                username: Meteor.user().username
             });
 
             event.target.commentText.value = "";
@@ -41,6 +43,10 @@ if (Meteor.isClient) {
                 }
             });
         }
+    });
+
+    Accounts.ui.config({
+        passwordSignupFields: "USERNAME_ONLY"
     });
 
 }

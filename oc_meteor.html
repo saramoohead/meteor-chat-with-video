@@ -4,11 +4,17 @@
 
 <body>
   <div class="container">
-    <form class="new-comment">
-      <input type="text" name="commentText" placeholder="What do you think?" />
-    </form>
+
+    {{> loginButtons}}
+
+    {{#if currentUser}}
+      <form class="new-comment">
+        <input type="text" name="commentText" placeholder="What do you think?" />
+      </form>
+    {{/if}}
 
     {{> comments}}
+
   </div>
 </body>
 
@@ -16,7 +22,8 @@
   <ul>
     {{#each commentList}}
       <li>
-        {{commentText}}
+        <p>{{commentText}}</p>
+        <p class="user-details">Posted by: {{username}}, {{createdAt}}</p>
         <button class="delete">&times;</button>
       </li>
     {{/each}}

@@ -1,0 +1,23 @@
+<head>
+  <title>Only Connect Video Chat</title>
+</head>
+
+<body>
+  <div class="container">
+    <form class="new-comment">
+      <input type="text" name="commentText" placeholder="What do you think?" />
+    </form>
+
+    {{> comments}}
+  </div>
+</body>
+
+<template name="comments">
+  <ul>
+    {{#each commentList}}
+      <li>
+        {{commentText}}
+      </li>
+    {{/each}}
+  </ul>
+</template>

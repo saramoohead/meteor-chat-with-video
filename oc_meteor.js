@@ -25,12 +25,7 @@ if (Meteor.isClient) {
 
             var commentText = event.target.commentText.value;
 
-            Comments.insert({
-                commentText: commentText,
-                createdAt: new Date(),
-                owner: Meteor.userId(),
-                username: Meteor.user().username
-            });
+            Meteor.call("addComment", commentText);
 
             event.target.commentText.value = "";
         },
@@ -48,7 +43,7 @@ if (Meteor.isClient) {
             },
             function(response){
                 if (response === true) {
-                    Comments.remove(commentId);
+                    Meteor.call("deleteComment", this._id);
                     swal("Deleted!", "Comment deleted.", "success");
                 } else {
                 }
@@ -67,3 +62,21 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+Meteor.methods({
+    addComment: function (commentText) {
+        if (! Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
+
+        Comments.insert({
+            commentText: commentText,
+            createdAt: new Date(),
+            owner: Meteor.userId(),
+            username: Meteor.user().username
+        });
+    },
+    deleteComment: function (commentId) {
+        Comments.remove(commentId);
+    }
+});

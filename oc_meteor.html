@@ -24,10 +24,16 @@
       <li>
         <p>
           {{commentText}}
-          <button class="delete">&times;</button>
+          {{> deleteComments}}
         </p>
         <p class="user-details">Posted by: {{username}} on {{createdAt}}</p>
       </li>
     {{/each}}
   </ul>
+</template>
+
+<template name="deleteComments">
+  {{#if userCheck}}
+    <button class="delete">&times;</button>
+  {{/if}}
 </template>

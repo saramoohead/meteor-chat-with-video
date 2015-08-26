@@ -8,6 +8,17 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.deleteComments.helpers({
+        userCheck: function () {
+        var thisCommentOwner = Comments.findOne(this._id).owner;
+            if (Meteor.userId() == thisCommentOwner) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+
     Template.body.events({
         "submit .new-comment": function (event) {
             event.preventDefault();

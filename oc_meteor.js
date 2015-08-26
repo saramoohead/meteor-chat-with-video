@@ -16,13 +16,8 @@ if (Meteor.isClient) {
     });
 
     Template.deleteComments.helpers({
-        userCheck: function () {
-        var thisCommentOwner = Comments.findOne(this._id).owner;
-            if (Meteor.userId() == thisCommentOwner) {
-                return true;
-            } else {
-                return false;
-            }
+        isOwner: function () {
+            return this.owner === Meteor.userId();
         }
     });
 

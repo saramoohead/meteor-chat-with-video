@@ -52,7 +52,8 @@ form {
   margin: 10px 15px 0 15px;
   position: relative;
   border: #eee 2px solid;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .new-comment input {

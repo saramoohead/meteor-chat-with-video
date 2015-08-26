@@ -30,8 +30,21 @@ header {
   position: relative;
 }
 
+.video {
+  display: block;
+  margin: 0 auto;
+  min-width: 100%;
+}
+
 #login-buttons {
   display: block;
+}
+
+.login {
+  font-size: 1.1em;
+  color: #315481;
+  padding: 15px 15px;
+  display: inline-block;
 }
 
 h1 {
@@ -40,12 +53,6 @@ h1 {
   margin-bottom: 10px;
   display: inline-block;
   margin-right: 1em;
-}
-
-.login {
-  font-size: 1.1em;
-  padding: 15px 15px;
-  display: inline-block;
 }
 
 form {

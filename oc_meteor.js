@@ -1,6 +1,13 @@
 Comments = new Mongo.Collection("comments");
 
+if (Meteor.isServer) {
+    Meteor.publish("comments", function () {
+        return Comments.find();
+    });
+}
+
 if (Meteor.isClient) {
+    Meteor.subscribe("comments");
 
     Template.comments.helpers({
         commentList: function () {
@@ -55,12 +62,6 @@ if (Meteor.isClient) {
         passwordSignupFields: "USERNAME_ONLY"
     });
 
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
 }
 
 Meteor.methods({

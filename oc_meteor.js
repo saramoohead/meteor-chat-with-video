@@ -4,6 +4,10 @@ if (Meteor.isServer) {
     Meteor.publish("comments", function () {
         return Comments.find();
     });
+
+    // surely this can't stay?
+    Roles.addUsersToRoles("a9YuAzFmPHaXpPvbS", 'super-admin');
+
 }
 
 if (Meteor.isClient) {
@@ -54,7 +58,7 @@ if (Meteor.isClient) {
     });
 
     Accounts.ui.config({
-        passwordSignupFields: "USERNAME_ONLY"
+        passwordSignupFields: "USERNAME_AND_EMAIL"
     });
 
 }

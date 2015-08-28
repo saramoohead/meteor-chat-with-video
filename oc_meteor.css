@@ -23,19 +23,17 @@ body {
   background: white;
 }
 
+.logo {
+  margin: 15px;
+  height: 50px
+}
+
 header {
   background: #d2edf4;
   background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
   padding: 20px 15px 15px 15px;
   position: relative;
 }
-
-/*.video {
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  min-width: 100%;
-}*/
 
 .video {
   position: relative;
@@ -51,22 +49,16 @@ header {
   height: 100%;
 }
 
+.topnav {
+  font-size: 1.1em;
+  color: #315481;
+  padding: 15px 15px;
+  display: inline-block;
+  vertical-align: top
+}
+
 #login-buttons {
   display: block;
-}
-
-.login {
-  font-size: 1.1em;
-  color: #315481;
-  padding: 15px 15px;
-  display: inline-block;
-}
-
-.admin {
-  font-size: 1.1em;
-  color: #315481;
-  padding: 15px 15px;
-  display: inline-block;
 }
 
 h1 {
@@ -78,7 +70,7 @@ h1 {
 }
 
 form {
-  margin: 10px 15px 0 15px;
+  margin: 20px 15px 0 15px;
   position: relative;
   border: #eee 2px solid;
   border-radius: 5px;
@@ -121,6 +113,7 @@ li {
 
 li .text {
   margin-left: 10px;
+  /*line-height: .5em*/
 }
 
 li .user-details {

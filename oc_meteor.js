@@ -25,6 +25,12 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.adminPanelOption.helpers({
+        isAdmin: function () {
+            return true;
+        }
+    });
+
     Template.body.events({
         "submit .new-comment": function (event) {
             event.preventDefault();

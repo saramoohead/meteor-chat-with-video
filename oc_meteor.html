@@ -6,6 +6,9 @@
   <div class="container">
 
     <span class="login">{{> loginButtons}}</span>
+    <span class="admin">{{> adminPanelOption}}</span>
+
+    <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/isY9xGGvf1o" frameborder="0" allowfullscreen></iframe></div>
 
     {{#if currentUser}}
       <form class="new-comment">
@@ -36,4 +39,16 @@
   {{#if isOwner}}
     <button class="delete">&times;</button>
   {{/if}}
+</template>
+
+<template name="adminPanelOption">
+  {{#if isAdmin}}
+    <span>admin panel</span>
+  {{/if}}
+</template>
+
+<template name="adminPanel">
+  <h1>Admin Panel</h1>
+  <h3>Add video</h3>
+  <h3>Add admin</h3>
 </template>

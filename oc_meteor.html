@@ -4,9 +4,12 @@
 
 <body>
   <div class="container">
-    <img class="logo" src="logo.png">
-    <span class="topnav">{{> loginButtons}}</span>
-    <span class="topnav">{{> adminPanelOption}}</span>
+    <header>
+      <img class="logo" src="logo.png">
+      <span class="topnav">{{> loginButtons}}</span>
+      <span class="topnav">{{> adminPanelOption}}</span>
+    </header>
+
 
     <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/isY9xGGvf1o" frameborder="0" allowfullscreen></iframe></div>
 
@@ -20,6 +23,9 @@
 
   </div>
 </body>
+
+<template name="home">
+</template>
 
 <template name="comments">
   <ul>
@@ -43,12 +49,12 @@
 
 <template name="adminPanelOption">
   {{#if isAdmin}}
-    <span>admin panel</span>
+    <span><a href="/ocadmin">admin panel</a></span>
   {{/if}}
 </template>
 
 <template name="adminPanel">
-  <h1>Admin Panel</h1>
+  <h3>Admin Panel</h3>
   <h3>Add video</h3>
   <h3>Add admin</h3>
 </template>

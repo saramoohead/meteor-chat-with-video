@@ -13,6 +13,14 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
     Meteor.subscribe("comments");
 
+    Router.route('/', function () {
+        this.render('home');
+    });
+
+    // Router.route('/ocadmin', function () {
+    //     this.render('adminPanel');
+    // });
+
     Template.comments.helpers({
         commentList: function () {
             return Comments.find({}, {sort: {createdAt: -1}});

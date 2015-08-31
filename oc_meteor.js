@@ -5,21 +5,22 @@ if (Meteor.isServer) {
         return Comments.find();
     });
 
+    Meteor.publish("adminPanelUserData", function () {
+        return Meteor.users.find({}, {fields: {'adminPanel': 1}});
+    });
+
     // surely this can't stay?
-    Roles.addUsersToRoles("a9YuAzFmPHaXpPvbS", 'super-admin');
+    // Roles.addUsersToRoles("a9YuAzFmPHaXpPvbS", 'super-admin');
 
 }
 
 if (Meteor.isClient) {
     Meteor.subscribe("comments");
+    Meteor.subscribe("adminPanelUserData");
 
     Router.route('/', function () {
         this.render('home');
     });
-
-    // Router.route('/ocadmin', function () {
-    //     this.render('adminPanel');
-    // });
 
     Template.comments.helpers({
         commentList: function () {
@@ -33,9 +34,27 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.adminPanelOption.helpers({
-        isAdmin: function () {
-            return true;
+    Template.adminPanel.helpers({
+        isAdminPanelOn: function () {
+            if (Session.get("adminPanelStatus")) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        toggleAdminPanelStatus: function () {
+            return Session.get("adminPanelStatus");
+        }
+    });
+
+    Template.body.helpers({
+        adminPanelAccess: function () {
+            var user = Meteor.user();
+            if (user) {
+                console.log("****");
+                console.log(user.adminPanel);
+                return user.adminPanel;
+            }
         }
     });
 
@@ -49,10 +68,8 @@ if (Meteor.isClient) {
 
             event.target.commentText.value = "";
         },
-
         "click .delete": function () {
             var commentId = this._id;
-
             swal({
                 title: "Delete comment?",
                 type: "warning",
@@ -68,6 +85,9 @@ if (Meteor.isClient) {
                 } else {
                 }
             });
+        },
+        "change .admin-panel-toggle input": function (event) {
+            Session.set("adminPanelStatus", event.target.checked);
         }
     });
 
@@ -75,6 +95,11 @@ if (Meteor.isClient) {
         passwordSignupFields: "USERNAME_AND_EMAIL"
     });
 
+    Meteor.users.deny({
+        update: function() {
+            return true;
+        }
+    });
 }
 
 Meteor.methods({

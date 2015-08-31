@@ -7,7 +7,15 @@
     <header>
       <img class="logo" src="logo.png">
       <span class="topnav">{{> loginButtons}}</span>
-      <span class="topnav">{{> adminPanelOption}}</span>
+
+      {{#if adminPanelAccess}}
+        <label class="topnav admin-panel-toggle">
+          <input type="checkbox" checked="{{toggled}}" />
+          admin panel
+        </label>
+      {{/if}}
+
+      {{> adminPanel}}
     </header>
 
 
@@ -47,14 +55,11 @@
   {{/if}}
 </template>
 
-<template name="adminPanelOption">
-  {{#if isAdmin}}
-    <span><a href="/ocadmin">admin panel</a></span>
+<template name="adminPanel">
+  {{#if isAdminPanelOn}}
+    <h3>Admin Panel</h3>
+    <h3>Add video</h3>
+    <h3>Add admin</h3>
   {{/if}}
 </template>
 
-<template name="adminPanel">
-  <h3>Admin Panel</h3>
-  <h3>Add video</h3>
-  <h3>Add admin</h3>
-</template>

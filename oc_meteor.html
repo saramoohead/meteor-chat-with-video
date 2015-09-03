@@ -14,18 +14,11 @@
           admin panel
         </label>
       {{/if}}
-
       {{> adminPanel}}
+
     </header>
 
-
     <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/isY9xGGvf1o" frameborder="0" allowfullscreen></iframe></div>
-
-    {{#if currentUser}}
-      <form class="new-comment">
-        <input type="text" name="commentText" placeholder="What do you think?" />
-      </form>
-    {{/if}}
 
     {{> comments}}
 
@@ -37,11 +30,19 @@
 
 <template name="comments">
   <ul>
+    {{#if currentUser}}
+      <form class="new-comment">
+        <input type="text" name="commentText" placeholder="What do you think?" />
+      </form>
+    {{/if}}
+
     {{#each commentList}}
       <li>
         <p>
           {{commentText}}
-          {{> deleteComments}}
+          {{#if isOwner}}
+            <button class="delete-comment">&times;</button>
+          {{/if}}
         </p>
         <p class="user-details">Posted by: {{username}} on {{createdAt}}</p>
       </li>
@@ -49,17 +50,13 @@
   </ul>
 </template>
 
-<template name="deleteComments">
-  {{#if isOwner}}
-    <button class="delete">&times;</button>
-  {{/if}}
-</template>
-
 <template name="adminPanel">
   {{#if isAdminPanelOn}}
-    <h3>Admin Panel</h3>
-    <h3>Add video</h3>
-    <h3>Add admin</h3>
+    <h4>Add video</h4>
+      <form class="new-video">
+        <textarea type="text" name="videoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
+        <input type="submit" value="Add video">
+      </form>
   {{/if}}
 </template>
 

@@ -36,11 +36,14 @@ header {
 }
 
 .video {
+  background-image: url("video_loading.png");
+  background-repeat: no-repeat; 
+  background-position: center;
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
-  height: 0;
 }
+
 .video iframe {
   position: absolute;
   top: 0;

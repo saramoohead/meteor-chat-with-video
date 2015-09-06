@@ -5,16 +5,16 @@
 <body>
   <div class="container">
     <header>
-      <img class="logo" src="logo.png">
-      <span class="topnav">{{> loginButtons}}</span>
-
-      {{#if adminPanelAccess}}
-        <label class="topnav admin-panel-toggle">
-          <input type="checkbox" checked="{{toggled}}" />
-          admin panel
-        </label>
-      {{/if}}
       {{> adminPanel}}
+
+      <img class="logo" src="logo.png">
+
+      <div class="button">{{> loginButtons}}</div>
+      {{#if adminPanelAccess}}
+        <div class="button admin-button">Admin</div>
+      {{else}}
+        <div class="button">Visit OC</div>
+      {{/if}}
 
     </header>
 
@@ -52,11 +52,13 @@
 
 <template name="adminPanel">
   {{#if isAdminPanelOn}}
-    <h4>Add video</h4>
+    <div class="animated slideInDown">
+      <h4>Add video</h4>
       <form class="new-video">
         <textarea type="text" name="videoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
         <input type="submit" value="Add video">
       </form>
+    </div>
   {{/if}}
 </template>
 

@@ -39,7 +39,7 @@ if (Meteor.isClient) {
 
     Template.adminPanel.helpers({
         isAdminPanelOn: function () {
-            if (Session.get("adminPanelStatus")) {
+            if (Session.get("adminPanelStatus") == "admin on") {
                 return true;
             } else {
                 return false;
@@ -54,16 +54,20 @@ if (Meteor.isClient) {
         adminPanelAccess: function () {
             var user = Meteor.user();
             if (user) {
-                console.log("****");
-                console.log(user.adminPanel);
                 return user.adminPanel;
             }
         }
     });
 
     Template.body.events({
-        "change .admin-panel-toggle input": function (event) {
-            Session.set("adminPanelStatus", event.target.checked);
+        "click .admin-button": function(){
+            if (!Session.get("adminPanelStatus")) {
+                Session.set("adminPanelStatus", "admin on");
+            } else if (Session.get("adminPanelStatus") == "admin off") {
+                Session.set("adminPanelStatus", "admin on");
+            } else {
+                Session.set("adminPanelStatus", "admin off");
+            }
         }
     });
 

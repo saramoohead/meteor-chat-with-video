@@ -5,19 +5,23 @@
 <body>
   <div class="container">
     <header>
-      {{> adminPanel}}
+      <img class="logo" src="logo.png"><br>
 
-      <img class="logo" src="logo.png">
-
-      <div class="button">{{> loginButtons}}</div>
-      {{#if adminPanelAccess}}
-        <div class="button admin-button">Admin</div>
-      {{else}}
-        <div class="button">Visit OC</div>
-      {{/if}}
+      <div class="buttons">
+        <div class="button animated fadeIn">{{> loginButtons}}</div>
+        {{#if adminPanelAccess}}
+          <div class="button admin-button animated fadeIn">Admin</div>
+        {{else}}
+          <div class="button animated fadeIn"><a href="http://www.onlyconnect.london/">Visit OC</a></div>
+        {{/if}}
+      </div>
 
     </header>
 
+    <div class="animated {{adminPanelClass}} admin-panel">
+      {{> adminPanel}}
+    </div>
+    
     <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/isY9xGGvf1o" frameborder="0" allowfullscreen></iframe></div>
 
     {{> comments}}
@@ -52,13 +56,10 @@
 
 <template name="adminPanel">
   {{#if isAdminPanelOn}}
-    <div class="animated slideInDown">
-      <h4>Add video</h4>
       <form class="new-video">
         <textarea type="text" name="videoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
         <input type="submit" value="Add video">
       </form>
-    </div>
   {{/if}}
 </template>
 

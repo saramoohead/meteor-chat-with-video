@@ -2,6 +2,10 @@ Template.comments.helpers({
     commentList: function () {
         return Comments.find({}, {sort: {createdAt: -1}});
     },
+    createdAtModified: function () {
+        var timestamp = this.createdAt;
+        return timestamp.toString().slice(15,25);
+    },
     isOwner: function () {
         var user = Meteor.user();
         if (user) {
@@ -13,8 +17,10 @@ Template.comments.helpers({
     isAdmin: function () {
         var commentOwner = this.owner;
         var userLookUp = Meteor.users.findOne(commentOwner);
-        if (commentOwner == userLookUp._id && userLookUp.adminPanel) {
-            return true;
+        if (userLookUp) {
+            if (commentOwner == userLookUp._id && userLookUp.adminPanel) {
+                return true;
+            }
         }
     }
 });

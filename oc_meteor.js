@@ -43,7 +43,6 @@ if (Meteor.isClient) {
     Template.video.helpers({
         latestVideo: function () {
             var latestVideoDocument = Videos.findOne({}, {sort: {createdAt: -1}});
-            
             if (latestVideoDocument) {
                 return latestVideoDocument.videoLink;
             }
@@ -168,5 +167,7 @@ Meteor.methods({
             owner: Meteor.userId(),
             username: Meteor.user().username
         });
+
+        template.autorun(runFunc);
     },
 });

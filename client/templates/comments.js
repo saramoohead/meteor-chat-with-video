@@ -1,6 +1,9 @@
 Template.comments.helpers({
     commentList: function () {
-        return Comments.find({}, {sort: {createdAt: -1}});
+        var commentList = Comments.find({}, {sort: {createdAt: -1}});
+        if (commentList) {
+            return commentList;
+        }
     },
     createdAtModified: function () {
         var timestamp = this.createdAt;

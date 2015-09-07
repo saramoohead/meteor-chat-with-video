@@ -145,6 +145,11 @@ li .user-details {
   color: #9f9f9f;
 }
 
+.admin-class {
+  background-color: #A9A9A9;
+  opacity: 0.4;
+}
+
 .delete-comment {
   float: right;
   font-weight: bold;

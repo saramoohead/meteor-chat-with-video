@@ -40,6 +40,16 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.video.helpers({
+        latestVideo: function () {
+            var latestVideoDocument = Videos.findOne({}, {sort: {createdAt: -1}});
+            
+            if (latestVideoDocument) {
+                return latestVideoDocument.videoLink;
+            }
+        }
+    });
+
     Template.adminPanel.helpers({
         isAdminPanelOn: function () {
             if (Session.get("adminPanelStatus") == "admin on") {
@@ -47,9 +57,6 @@ if (Meteor.isClient) {
             } else {
                 return false;
             }
-        },
-        toggleAdminPanelStatus: function () {
-            return Session.get("adminPanelStatus");
         }
     });
 
@@ -113,7 +120,6 @@ if (Meteor.isClient) {
 
     Template.adminPanel.events({
         "submit .new-video": function (event) {
-            console.log("****")
             event.preventDefault();
 
             var videoLink = event.target.videoLink.value;

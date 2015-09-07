@@ -8,12 +8,12 @@
       <img class="logo" src="logo.png"><br>
 
       <div class="buttons">
-        <div class="button animated fadeIn">{{> loginButtons}}</div>
         {{#if adminPanelAccess}}
-          <div class="button admin-button animated fadeIn">Admin</div>
+          <div class="button admin-button animated fadeIn">Admin panel</div>
         {{else}}
           <div class="button animated fadeIn"><a href="http://www.onlyconnect.london/">Visit OC</a></div>
         {{/if}}
+        <div class="button animated fadeIn">{{> loginButtons}}</div>
       </div>
 
     </header>
@@ -21,8 +21,8 @@
     <div class="animated {{adminPanelClass}} admin-panel">
       {{> adminPanel}}
     </div>
-    
-    <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/isY9xGGvf1o" frameborder="0" allowfullscreen></iframe></div>
+
+    <div class="video">{{> video}}</div>
 
     {{> comments}}
 
@@ -61,5 +61,9 @@
         <input type="submit" value="Add video">
       </form>
   {{/if}}
+</template>
+
+<template name="video">
+  <div>{{{latestVideo}}}</div>
 </template>
 

@@ -18,7 +18,7 @@
 
     </header>
 
-    <div class="animated {{adminPanelClass}} admin-panel">
+    <div class="animated admin-panel">
       {{> adminPanel}}
     </div>
 
@@ -28,42 +28,3 @@
 
   </div>
 </body>
-
-<template name="home">
-</template>
-
-<template name="comments">
-  <ul>
-    {{#if currentUser}}
-      <form class="new-comment">
-        <input type="text" name="commentText" placeholder="What do you think?" />
-      </form>
-    {{/if}}
-
-    {{#each commentList}}
-      <li class="{{adminClass}}">
-        <p>
-          {{commentText}}
-          {{#if isOwner}}
-            <button class="delete-comment">&times;</button>
-          {{/if}}
-        </p>
-        <p class="user-details">Posted by: {{username}} on {{createdAt}}</p>
-      </li>
-    {{/each}}
-  </ul>
-</template>
-
-<template name="adminPanel">
-  {{#if isAdminPanelOn}}
-      <form class="new-video">
-        <textarea type="text" name="videoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
-        <input type="submit" value="Add video">
-      </form>
-  {{/if}}
-</template>
-
-<template name="video">
-  <div>{{{latestVideo}}}</div>
-</template>
-

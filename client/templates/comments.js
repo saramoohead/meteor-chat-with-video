@@ -10,12 +10,11 @@ Template.comments.helpers({
             }
         }
     },
-    adminClass: function () {
+    isAdmin: function () {
         var commentOwner = this.owner;
         var userLookUp = Meteor.users.findOne(commentOwner);
         if (commentOwner == userLookUp._id && userLookUp.adminPanel) {
-            console.log("*** step 2");
-            return "admin-class";
+            return true;
         }
     }
 });

@@ -3,8 +3,7 @@ Videos = new Mongo.Collection("videos");
 
 if (Meteor.isServer) {
 
-    // surely this can't stay?
-    // Roles.addUsersToRoles("a9YuAzFmPHaXpPvbS", 'super-admin');
+    Roles.addUsersToRoles("ya9LFn8jNdiKAGEst", 'super-admin');
 
 }
 

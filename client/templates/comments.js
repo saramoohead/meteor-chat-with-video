@@ -2,6 +2,7 @@ Template.comments.helpers({
     commentList: function () {
         var commentList = Comments.find({}, {sort: {createdAt: -1}});
         if (commentList) {
+            console.log("*** commentList");
             return commentList;
         }
     },

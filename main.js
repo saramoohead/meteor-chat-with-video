@@ -83,6 +83,7 @@ Meteor.methods({
             username: Meteor.user().username
         });
 
-        template.autorun(runFunc);
+        Meteor.subscribe();
+
     },
 });

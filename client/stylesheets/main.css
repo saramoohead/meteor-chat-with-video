@@ -13,7 +13,7 @@ body {
   padding: 0;
   margin: 0;
 
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .container {
@@ -48,9 +48,9 @@ header a:visited {
   display:inline-block;
   margin: 0 auto;
   background: #000000;
-  width: 298px;
-  height: 36px;
-  line-height: 36px;
+  width: 49%;
+  height: 50px;
+  line-height: 50px;
   vertical-align: middle;
   text-align: center;
   color: #ffffff;
@@ -103,7 +103,7 @@ input {
   background: transparent;
   border: none;
   width: 100%;
-  font-size: 1em;
+  font-size: .8em;
 }
 
 input:focus{
@@ -127,6 +127,7 @@ ul {
 }
 
 li {
+  font-size: 1em;
   position: relative;
   list-style: none;
   padding: 0 15px 0 15px;
@@ -138,7 +139,7 @@ li .text {
 }
 
 li .user-details {
-  font-size: .8em;
+  font-size: .75em;
   margin-left: 10px;
   text-align: right;
   color: #9f9f9f;
@@ -159,8 +160,12 @@ li .user-details {
   position: relative;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .button {
+    width: 100%;
+  }
+
+  .container {
     width: 100%;
   }
 

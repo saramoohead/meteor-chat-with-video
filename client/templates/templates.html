@@ -1,4 +1,31 @@
+<template name="welcome">
+  <div class="container">
+    <div class="buttons">
+      {{#if adminPanelAccess}}
+        <div class="button admin-button animated fadeIn">Admin panel</div>
+      {{else}}
+        <div class="button animated fadeIn"><a href="http://www.onlyconnect.london/">Visit OC</a></div>
+      {{/if}}
+      <div class="button animated fadeIn">{{> loginButtons}}</div>
+    </div>
+    <div class="animated {{adminPanelClass}} admin-panel">
+      {{> adminPanel}}
+    </div>
+    <img class="inspire" src="open.jpg"><br>
+  </div>
+</template>
+
 <template name="home">
+  <div class="container">
+    <header>
+      <img class="logo" src="logo.png"><br>
+
+    </header>
+
+    <div class="video">{{> video}}</div>
+
+    {{> comments}}
+  </div>
 </template>
 
 <template name="comments">

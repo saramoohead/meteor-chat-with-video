@@ -1,6 +1,14 @@
 Comments = new Mongo.Collection("comments");
 Videos = new Mongo.Collection("videos");
 
+Router.route('/', {
+    template: 'welcome'
+});
+
+Router.route('/week_1', {
+    template: 'home'
+});
+
 if (Meteor.isServer) {
 
     Roles.addUsersToRoles("ya9LFn8jNdiKAGEst", 'super-admin');
@@ -12,11 +20,8 @@ if (Meteor.isClient) {
     Meteor.subscribe("adminPanelUserData");
     Meteor.subscribe("videos");
 
-    Router.route('/', function () {
-        this.render('home');
-    });
 
-    Template.body.helpers({
+    Template.welcome.helpers({
         adminPanelAccess: function () {
             var user = Meteor.user();
             if (user) {
@@ -32,7 +37,11 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.body.events({
+    // if adminPanelOn (true or false)
+    // set Session as false to begin
+    // make a Session helper, for various events
+
+    Template.welcome.events({
         "click .admin-button": function(){
             if (!Session.get("adminPanelStatus")) {
                 Session.set("adminPanelStatus", "admin on");

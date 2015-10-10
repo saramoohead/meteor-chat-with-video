@@ -6,6 +6,7 @@ Router.route('/', {
 });
 
 Router.route('/week_1', {
+    name: 'home',
     template: 'home'
 });
 

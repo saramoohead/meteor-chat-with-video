@@ -42,6 +42,7 @@ header a:visited {
 
 .buttons {
   text-align: center;
+  background: #000000;
 }
 
 .button {
@@ -73,6 +74,7 @@ header a:visited {
     -o-animation-duration: 0.3s;
     animation-duration: 0.3s;
 }
+
 
 /* managing iframe positioning */
 .video {

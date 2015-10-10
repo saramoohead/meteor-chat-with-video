@@ -37,6 +37,7 @@ header a:link {
 
 header a:visited {
   color: #ffffff;
+  background: #000000;
 }
 
 .buttons {

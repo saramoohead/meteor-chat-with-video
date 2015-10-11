@@ -44,7 +44,7 @@
           {{/if}}
           {{commentText}}
           {{#if isOwner}}
-            <button class="delete-comment">&times;</button>
+            <button class="delete-button">&times;</button>
           {{/if}}
         </p>
         <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
@@ -55,10 +55,29 @@
 
 <template name="adminPanel">
   {{#if isAdminPanelOn}}
-      <form class="new-video">
-        <textarea type="text" name="videoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
-        <input type="submit" value="Add new video">
-      </form>
+    <form class="new-video">
+      YouTube Video:
+      <textarea type="text" name="videoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
+      Challenge Title:
+      <input type="text" name="challengeTitle" placeholder="Short challenge title here.">
+      Challenge Description:
+      <textarea type="text" name="challengeDescription" placeholder="Describe the challenge here."></textarea>
+      Date this challenge begins:
+      <input type="date" name="challengeDate">
+      <input type="submit" value="Add new challenge">
+    </form>
+
+    {{#each challengeList}}
+      <li>
+        <p>
+          Launch date: {{challengeDate}} Title: {{challengeTitle}}<br />
+          {{challengeDescription}}
+          <button class="delete-button">&times;</button>
+        </p>
+        <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
+      </li>
+    {{/each}}
+
   {{/if}}
 </template>
 

@@ -158,7 +158,7 @@ li .user-details {
   text-align: left;
 }
 
-.delete-comment {
+.delete-button {
   float: right;
   font-weight: bold;
   background: none;

@@ -9,3 +9,7 @@
     Meteor.publish("videos", function () {
         return Videos.find();
     });
+
+    Meteor.publish("challenges", function () {
+        return Challenges.find();
+    });

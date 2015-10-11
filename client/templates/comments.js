@@ -38,7 +38,7 @@ Template.comments.events({
 
         event.target.commentText.value = "";
     },
-    "click .delete-comment": function () {
+    "click .delete-button": function () {
         var commentId = this._id;
         swal({
             title: "Delete comment?",

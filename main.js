@@ -1,12 +1,13 @@
 Comments = new Mongo.Collection("comments");
-Videos = new Mongo.Collection("videos");
 Challenges = new Mongo.Collection("challenges");
+
+var currentChallenge = 'challenge_1';
 
 Router.route('/', {
     template: 'welcome'
 });
 
-Router.route('/challenge_1', {
+Router.route(currentChallenge, {
     name: 'home',
     template: 'home'
 });
@@ -20,7 +21,6 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
     Meteor.subscribe("comments");
     Meteor.subscribe("adminPanelUserData");
-    Meteor.subscribe("videos");
     Meteor.subscribe("challenges");
 
     Template.welcome.helpers({
@@ -82,21 +82,7 @@ Meteor.methods({
     deleteComment: function (commentId) {
         Comments.remove(commentId);
     },
-    addVideo: function (videoLink) {
-        if (! Meteor.userId()) {
-            throw new Meteor.Error("not-authorized");
-        }
-
-        Videos.insert({
-            videoLink: videoLink,
-            createdAt: new Date(),
-            owner: Meteor.userId(),
-            username: Meteor.user().username,
-        });
-
-        Meteor.subscribe();
-    },
-    addChallenge: function (challengeDate, challengeTitle, challengeDescription) {
+    addChallenge: function (challengeDate, challengeTitle, challengeDescription, challengeVideoLink) {
         if (! Meteor.userId()) {
             throw new Meteor.Error("not-authorized");
         }
@@ -105,6 +91,7 @@ Meteor.methods({
             challengeDate: challengeDate,
             challengeTitle: challengeTitle,
             challengeDescription: challengeDescription,
+            challengeVideoLink: challengeVideoLink,
             createdAt: new Date(),
             owner: Meteor.userId(),
             username: Meteor.user().username

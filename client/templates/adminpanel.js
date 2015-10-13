@@ -22,18 +22,17 @@ Template.adminPanel.events({
     "submit .new-video": function (event) {
         event.preventDefault();
 
-        var videoLink = event.target.videoLink.value;
         var challengeDate = event.target.challengeDate.value;
         var challengeTitle = event.target.challengeTitle.value;
         var challengeDescription = event.target.challengeDescription.value;
+        var challengeVideoLink = event.target.challengeVideoLink.value;
 
-        Meteor.call("addVideo", videoLink);
-        Meteor.call("addChallenge", challengeDate, challengeTitle, challengeDescription);
+        Meteor.call("addChallenge", challengeDate, challengeTitle, challengeDescription, challengeVideoLink);
 
-        event.target.videoLink.value = "";
         event.target.challengeDate.value = "";
         event.target.challengeTitle.value = "";
         event.target.challengeDescription.value = "";
+        event.target.challengeVideoLink.value = "";
     },
     "click .delete-button": function () {
         var challengeId = this._id;

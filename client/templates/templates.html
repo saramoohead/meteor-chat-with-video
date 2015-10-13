@@ -22,7 +22,7 @@
 
     </header>
 
-    <div class="video">{{> video}}</div>
+    <div class="video">{{> challenges}}</div>
 
     {{> comments}}
   </div>
@@ -56,14 +56,14 @@
 <template name="adminPanel">
   {{#if isAdminPanelOn}}
     <form class="new-video">
-      YouTube Video:
-      <textarea type="text" name="videoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
       Challenge Title:
       <input type="text" name="challengeTitle" placeholder="Short challenge title here.">
       Challenge Description:
       <textarea type="text" name="challengeDescription" placeholder="Describe the challenge here."></textarea>
       Date this challenge begins:
       <input type="date" name="challengeDate">
+      YouTube Video:
+      <textarea type="text" name="challengeVideoLink" placeholder="Paste full YouTube iframe embed code here"></textarea>
       <input type="submit" value="Add new challenge">
     </form>
 
@@ -71,7 +71,8 @@
       <li>
         <p>
           Launch date: {{challengeDate}} Title: {{challengeTitle}}<br />
-          {{challengeDescription}}
+          Description: {{challengeDescription}}<br />
+          Video link: {{{latestChallenge}}}
           <button class="delete-button">&times;</button>
         </p>
         <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
@@ -81,6 +82,6 @@
   {{/if}}
 </template>
 
-<template name="video">
-  <div>{{{latestVideo}}}</div>
+<template name="challenges">
+  <div>{{{latestChallenge}}}</div>
 </template>

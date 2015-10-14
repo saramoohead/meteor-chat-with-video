@@ -22,7 +22,7 @@
 
     </header>
 
-    <div class="video">{{> challenges}}</div>
+    <div class="challenge">{{> challenges}}</div>
 
     {{> comments}}
   </div>
@@ -83,5 +83,8 @@
 </template>
 
 <template name="challenges">
-  <div>{{{latestChallenge}}}</div>
+  <div class="video">{{{latestChallenge.challengeVideoLink}}}</div>
+  <h2>{{latestChallenge.challengeTitle}}</h2>
+  <p>{{latestChallenge.challengeDescription}}<br />
+    {{latestChallenge.challengeDate}}</p>
 </template>

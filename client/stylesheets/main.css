@@ -94,6 +94,14 @@ header a:visited {
   height: 100%;
 }
 
+p {
+  margin-left: 10px;
+}
+
+h2 {
+  margin-left: 10px;
+}
+
 form {
   position: relative;
   border: #2F4F4F 2px solid;

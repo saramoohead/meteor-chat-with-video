@@ -1,7 +1,7 @@
 Comments = new Mongo.Collection("comments");
 Challenges = new Mongo.Collection("challenges");
 
-var currentChallenge = 'challenge_1';
+var currentChallenge = 'name_of_challenge';
 
 Router.route('/', {
     template: 'welcome'
@@ -101,5 +101,5 @@ Meteor.methods({
     },
     deleteChallenge: function (challengeId) {
         Challenges.remove(challengeId);
-    },
+    }
 });

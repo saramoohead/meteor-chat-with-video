@@ -52,6 +52,9 @@ if (Meteor.isClient) {
             } else {
                 Session.set("adminPanelStatus", "admin off");
             }
+        },
+        "click .inspire": function(){
+            document.getElementById("welcome").className="container slideUpOut";
         }
     });
 

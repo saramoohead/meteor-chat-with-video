@@ -75,6 +75,12 @@ header a:visited {
     animation-duration: 0.3s;
 }
 
+.container{
+    -webkit-animation-duration: 0.2s;
+    -moz-animation-duration: 0.2s;
+    -o-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+}
 
 /* managing iframe positioning */
 .video {

@@ -1,8 +1,6 @@
 Comments = new Mongo.Collection("comments");
 Challenges = new Mongo.Collection("challenges");
 
-var currentChallenge = 'name_of_challenge';
-
 Router.route('/', {
     template: 'welcome'
 });
@@ -72,7 +70,7 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
-    addComment: function (commentText) {
+    addComment: function (commentText, currentChallenge) {
         if (! Meteor.userId()) {
             throw new Meteor.Error("not-authorized");
         }
@@ -81,7 +79,8 @@ Meteor.methods({
             commentText: commentText,
             createdAt: new Date(),
             owner: Meteor.userId(),
-            username: Meteor.user().username
+            username: Meteor.user().username,
+            challengeId: currentChallenge
         });
     },
     deleteComment: function (commentId) {

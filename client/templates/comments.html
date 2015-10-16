@@ -1,16 +1,18 @@
 <template name="comments">
-  <ul>
+
     {{#if currentUser}}
       <form class="new-comment">
         <input type="text" name="commentText" placeholder="What do you think of today's video?" />
       </form>
     {{/if}}
 
+  <p>Bob</p>
+  <ul>
     {{#each commentList}}
       <li class="{{adminClass}}">
         <p>
           {{#if isAdmin}}
-            <img class="admin-logo" src="logo.png">
+            <img class="admin-logo" src="/logo.png">
           {{/if}}
           {{commentText}}
           {{#if isOwner}}

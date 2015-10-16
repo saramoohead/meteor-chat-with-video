@@ -1,6 +1,10 @@
 Template.comments.helpers({
     commentList: function () {
-        var commentList = Comments.find({}, {sort: {createdAt: -1}});
+        var currentChallenge = this._id;
+        console.log("*********");
+        console.log(currentChallenge);
+        var commentList = Comments.find({ challengeId: currentChallenge }, {sort: {createdAt: -1}});
+        console.log(commentList);
         if (commentList) {
             return commentList;
         }
@@ -33,8 +37,9 @@ Template.comments.events({
         event.preventDefault();
 
         var commentText = event.target.commentText.value;
+        var currentChallenge = this._id;
 
-        Meteor.call("addComment", commentText);
+        Meteor.call("addComment", commentText, currentChallenge);
 
         event.target.commentText.value = "";
     },

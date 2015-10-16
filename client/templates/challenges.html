@@ -1,0 +1,20 @@
+<template name="challenge">
+  <div class="container animated slideInUp">
+    <header>
+      <img class="logo" src="logo.png"><br>
+
+    </header>
+
+    <div class="challenge">{{> challenges}}</div>
+
+    {{> comments}}
+  </div>
+</template>
+
+<template name="challenges">
+  <p>{{_id}}</p>
+  <div class="video">{{{challengeVideoLink}}}</div>
+  <h2>{{challengeTitle}}</h2>
+  <p>{{challengeDescription}}<br />
+    {{challengeDate}}</p>
+</template>

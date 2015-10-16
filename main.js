@@ -7,9 +7,12 @@ Router.route('/', {
     template: 'welcome'
 });
 
-Router.route(currentChallenge, {
-    name: 'home',
-    template: 'home'
+Router.route('/challenge/:_id', {
+    template: 'challenge',
+    data: function(){
+        var currentChallenge = this.params._id;
+        return Challenges.findOne({ _id: currentChallenge });
+    }
 });
 
 if (Meteor.isServer) {
@@ -41,7 +44,6 @@ if (Meteor.isClient) {
 
     // if adminPanelOn (true or false)
     // set Session as false to begin
-    // make a Session helper, for various events
 
     Template.welcome.events({
         "click .admin-button": function(){

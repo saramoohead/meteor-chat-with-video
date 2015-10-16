@@ -1,0 +1,16 @@
+<template name="welcome">
+  <div class="container" id="welcome">
+    <div class="buttons">
+      {{#if adminPanelAccess}}
+        <div class="button admin-button animated fadeIn">Admin panel</div>
+      {{else}}
+        <div class="button animated fadeIn"><a href="http://www.onlyconnect.london/">Visit OC</a></div>
+      {{/if}}
+      <div class="button animated fadeIn">{{> loginButtons}}</div>
+    </div>
+    <div class="animated {{adminPanelClass}} admin-panel">
+      {{> adminPanel}}
+    </div>
+    <a href="{{pathFor route='challenge'}}"><img class="inspire" src="dontlookback.png"></a>
+  </div>
+</template>

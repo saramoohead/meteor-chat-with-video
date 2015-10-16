@@ -1,0 +1,24 @@
+<template name="comments">
+  <ul>
+    {{#if currentUser}}
+      <form class="new-comment">
+        <input type="text" name="commentText" placeholder="What do you think of today's video?" />
+      </form>
+    {{/if}}
+
+    {{#each commentList}}
+      <li class="{{adminClass}}">
+        <p>
+          {{#if isAdmin}}
+            <img class="admin-logo" src="logo.png">
+          {{/if}}
+          {{commentText}}
+          {{#if isOwner}}
+            <button class="delete-button">&times;</button>
+          {{/if}}
+        </p>
+        <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</template>

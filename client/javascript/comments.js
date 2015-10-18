@@ -1,10 +1,7 @@
 Template.comments.helpers({
     commentList: function () {
         var currentChallenge = this._id;
-        console.log("*********");
-        console.log(currentChallenge);
         var commentList = Comments.find({ challengeId: currentChallenge }, {sort: {createdAt: -1}});
-        console.log(commentList);
         if (commentList) {
             return commentList;
         }

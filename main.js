@@ -1,25 +1,58 @@
-Comments = new Mongo.Collection("comments");
-Challenges = new Mongo.Collection("challenges");
+Comments = new Mongo.Collection('comments');
+Challenges = new Mongo.Collection('challenges');
 
 Router.route('/', {
     template: 'welcome'
 });
 
+Router.route('live', {
+    template: 'challenge',
+    data: function(){
+        var currentDate = new Date();
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1;
+        var year = currentDate.getFullYear();
+        var comparableDate = year + "-" + month + "-" + day;
+
+        var liveChallenge = Challenges.findOne(
+            { challengeDate: { $lte: comparableDate } },
+            { sort: { challengeDate: -1 } }
+        );
+        return liveChallenge;
+    }
+});
+
 Router.route('/challenge/:_id', {
     template: 'challenge',
     data: function(){
-        var currentChallenge = this.params._id;
-        return Challenges.findOne({ _id: currentChallenge });
+        var clickedChallenge = this.params._id;
+        return Challenges.findOne({ _id: clickedChallenge });
     }
 });
 
 if (Meteor.isServer) {
+
+    SyncedCron.add({
+        name: 'Change challenge weekly',
+        schedule: function(parser) {
+            return parser.text('at 13:44 pm on Sat');
+        },
+        job: function() {
+            // console.log("********insideSyncedCronAdd");
+        }
+    });
+
+    Meteor.startup(function () {
+        SyncedCron.start();
+        // not sure if I need to include a stop?
+    });
 
     Roles.addUsersToRoles("ya9LFn8jNdiKAGEst", 'super-admin');
 
 }
 
 if (Meteor.isClient) {
+
     Meteor.subscribe("comments");
     Meteor.subscribe("adminPanelUserData");
     Meteor.subscribe("challenges");

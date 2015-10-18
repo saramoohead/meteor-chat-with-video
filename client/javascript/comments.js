@@ -1,7 +1,14 @@
 Template.comments.helpers({
     commentList: function () {
         var currentChallenge = this._id;
-        var commentList = Comments.find({ challengeId: currentChallenge }, {sort: {createdAt: -1}});
+        var commentList = Comments.find({ challengeId: currentChallenge }, {sort: { createdAt: -1 } });
+        if (commentList) {
+            return commentList;
+        }
+    },
+    featuredComments: function () {
+        var currentChallenge = this._id;
+        var commentList = Comments.find({ challengeId: currentChallenge, featured: true }, { sort: { createdAt: -1 } });
         if (commentList) {
             return commentList;
         }
@@ -33,8 +40,10 @@ Template.comments.helpers({
             }
         }
     },
-    featured: function () {
-        //&#9734;
+    isFeatured: function () {
+        if (this.featured) {
+            return true;
+        }
     }
 });
 

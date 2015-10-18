@@ -6,6 +6,19 @@
       </form>
     {{/if}}
 
+  <h3>Featured comments</h3>
+  <ul>
+    {{#each featuredComments}}
+      <li>
+        <p>
+          &#9733; {{commentText}}
+          <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
+        </p>
+      </li>
+    {{/each}}
+  </ul>
+
+  <h3>The Conversation</h3>
   <ul>
     {{#each commentList}}
       <li>
@@ -18,7 +31,11 @@
             <button class="delete-button comment-button">&times;</button>
           {{/if}}
           {{#if isAdmin}}
-            <button class="feature-button comment-button">&#9734;</button>
+            {{#if isFeatured}}
+              <button class="feature-button comment-button">&#9733;</button>
+            {{else}}
+              <button class="feature-button comment-button">&#9734;</button>
+            {{/if}}
           {{/if}}
         </p>
         <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>

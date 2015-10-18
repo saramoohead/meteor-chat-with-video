@@ -113,11 +113,20 @@ Meteor.methods({
             createdAt: new Date(),
             owner: Meteor.userId(),
             username: Meteor.user().username,
+            featured: false,
             challengeId: currentChallenge
         });
     },
     deleteComment: function (commentId) {
         Comments.remove(commentId);
+    },
+    featureCommentToggle: function (commentId) {
+        var thisComment = Comments.findOne({ _id: commentId });
+        if (thisComment.featured) {
+            Comments.update(commentId, { $set: { featured: false } });
+        } else {
+            Comments.update(commentId, { $set: { featured: true } });
+        }
     },
     addChallenge: function (challengeDate, challengeTitle, challengeDescription, challengeVideoLink) {
         if (! Meteor.userId()) {

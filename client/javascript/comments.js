@@ -19,6 +19,12 @@ Template.comments.helpers({
         }
     },
     isAdmin: function () {
+        var user = Meteor.user();
+        if (user.adminPanel) {
+            return true;
+        }
+    },
+    commenterIsAdmin: function () {
         var commentOwner = this.owner;
         var userLookUp = Meteor.users.findOne(commentOwner);
         if (userLookUp) {
@@ -26,6 +32,9 @@ Template.comments.helpers({
                 return true;
             }
         }
+    },
+    featured: function () {
+        //&#9734;
     }
 });
 
@@ -57,6 +66,10 @@ Template.comments.events({
             } else {
             }
         });
+    },
+    "click .feature-button": function () {
+        var commentId = this._id;
+        Meteor.call("featureCommentToggle", commentId);
     }
 });
 

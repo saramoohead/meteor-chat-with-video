@@ -8,14 +8,17 @@
 
   <ul>
     {{#each commentList}}
-      <li class="{{adminClass}}">
+      <li>
         <p>
-          {{#if isAdmin}}
+          {{#if commenterIsAdmin}}
             <img class="admin-logo" src="/logo.png">
           {{/if}}
           {{commentText}}
           {{#if isOwner}}
-            <button class="delete-button">&times;</button>
+            <button class="delete-button comment-button">&times;</button>
+          {{/if}}
+          {{#if isAdmin}}
+            <button class="feature-button comment-button">&#9734;</button>
           {{/if}}
         </p>
         <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>

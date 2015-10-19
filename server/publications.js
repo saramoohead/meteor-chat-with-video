@@ -3,11 +3,7 @@
     });
 
     Meteor.publish("adminPanelUserData", function () {
-        return Meteor.users.find({}, {fields: {'adminPanel': 1}});
-    });
-
-    Meteor.publish("videos", function () {
-        return Videos.find();
+        return Meteor.users.find({}, {fields: {'username': 1, 'adminPanel': 1}});
     });
 
     Meteor.publish("challenges", function () {

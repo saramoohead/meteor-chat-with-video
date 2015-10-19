@@ -12,6 +12,12 @@ Template.adminPanel.helpers({
             return challengeList;
         }
     },
+    adminList: function () {
+        var adminList = Meteor.users.find({ adminPanel: true });
+        if (adminList) {
+            return adminList;
+        }
+    },
     createdAtModified: function () {
         var timestamp = this.createdAt;
         return timestamp.toString().slice(15,25);
@@ -34,7 +40,16 @@ Template.adminPanel.events({
         event.target.challengeDescription.value = "";
         event.target.challengeVideoLink.value = "";
     },
-    "click .delete-button": function () {
+    "submit .new-admin": function (event) {
+        event.preventDefault();
+
+        var userName = event.target.userName.value;
+
+        Meteor.call("addAdmin", userName);
+
+        event.target.userName.value = "";
+    },
+    "click .delete-video": function () {
         var challengeId = this._id;
         swal({
             title: "Delete challenge?",
@@ -51,5 +66,10 @@ Template.adminPanel.events({
             } else {
             }
         });
+    },
+    "click .delete-admin": function () {
+        var userId = this._id;
+
+        Meteor.call("deleteAdmin", userId);
     }
 });

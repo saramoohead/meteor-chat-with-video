@@ -33,9 +33,9 @@ Router.route('/challenge/:_id', {
 if (Meteor.isServer) {
 
     SyncedCron.add({
-        name: 'Change challenge weekly',
+        name: 'GoRoost new video notification',
         schedule: function(parser) {
-            return parser.text('at 13:44 pm on Sat');
+            return parser.text('at 9:00 am on Mon');
         },
         job: function() {
             // console.log("********insideSyncedCronAdd");
@@ -46,8 +46,6 @@ if (Meteor.isServer) {
         SyncedCron.start();
         // not sure if I need to include a stop?
     });
-
-    Roles.addUsersToRoles("ya9LFn8jNdiKAGEst", 'super-admin');
 
 }
 
@@ -147,5 +145,11 @@ Meteor.methods({
     },
     deleteChallenge: function (challengeId) {
         Challenges.remove(challengeId);
+    },
+    addAdmin: function (userName) {
+        Meteor.users.update({ username: userName }, { $set: { adminPanel: true } });
+    },
+    deleteAdmin: function (userId) {
+        Meteor.users.update({_id: userId}, { $set: { adminPanel: false } });
     }
 });

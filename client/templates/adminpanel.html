@@ -12,6 +12,13 @@
       <input type="submit" value="Add new challenge">
     </form>
 
+    <form class="new-admin">
+      New admin user:
+      <input type="text" name="userName" placeholder="Type in exact username">
+      <input type="submit" value="Add new admin user">
+    </form>
+
+    <h2>Challenge List</h2>
     {{#each challengeList}}
       <li>
         <p>
@@ -19,9 +26,19 @@
           Launch date: {{challengeDate}}<br />
           Description: {{challengeDescription}}<br />
           Video link: {{{latestChallenge}}}
-          <button class="delete-button">&times;</button>
+          <button class="delete-video">&times;</button>
         </p>
         <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
+      </li>
+    {{/each}}
+
+    <h2>Admin List</h2>
+    {{#each adminList}}
+      <li>
+        <p>
+          {{username}}
+          <button class="delete-admin">&times;</button>
+        </p>
       </li>
     {{/each}}
 

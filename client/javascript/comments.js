@@ -13,31 +13,36 @@ Template.comments.helpers({
             return commentList;
         }
     },
+    featuredCommentsExist: function () {
+        var currentChallenge = this._id;
+        var commentList = Comments.find({ challengeId: currentChallenge, featured: true });
+        if (commentList.count() > 0) {
+            return true;
+        }
+    },
     createdAtModified: function () {
         var timestamp = this.createdAt;
-        return timestamp.toString().slice(15,25);
+        if (timestamp) {
+            return timestamp.toString().slice(15,25);
+        }
     },
     isOwner: function () {
         var user = Meteor.user();
-        if (user) {
-            if (this.owner === Meteor.userId() || user.adminPanel) {
-                return true;
-            }
+        if (user && this.owner === Meteor.userId() || user.adminPanel) {
+            return true;
         }
     },
     isAdmin: function () {
         var user = Meteor.user();
-        if (user.adminPanel) {
+        if (user && user.adminPanel) {
             return true;
         }
     },
     commenterIsAdmin: function () {
         var commentOwner = this.owner;
         var userLookUp = Meteor.users.findOne(commentOwner);
-        if (userLookUp) {
-            if (commentOwner == userLookUp._id && userLookUp.adminPanel) {
-                return true;
-            }
+        if (userLookUp && commentOwner == userLookUp._id && userLookUp.adminPanel) {
+            return true;
         }
     },
     isFeatured: function () {

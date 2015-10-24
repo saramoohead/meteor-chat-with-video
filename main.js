@@ -5,6 +5,10 @@ Router.route('/', {
     template: 'welcome'
 });
 
+Router.route('/admin', {
+    template: 'adminPanel'
+});
+
 Router.route('live', {
     template: 'challenge',
     data: function(){
@@ -29,6 +33,7 @@ Router.route('/challenge/:_id', {
         return Challenges.findOne({ _id: clickedChallenge });
     }
 });
+
 
 if (Meteor.isServer) {
 
@@ -86,6 +91,7 @@ if (Meteor.isClient) {
         },
         "click .inspire": function(){
             document.getElementById("welcome").className="container slideUpOut";
+            _roost.prompt();
         }
     });
 

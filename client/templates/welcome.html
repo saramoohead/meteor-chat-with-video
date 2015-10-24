@@ -2,15 +2,15 @@
   <div class="container" id="welcome">
     <div class="buttons">
       {{#if adminPanelAccess}}
-        <div class="button admin-button animated fadeIn">Admin panel</div>
+        <div class="button admin-button animated fadeIn"><a href="admin">Admin panel</a></div>
       {{else}}
         <div class="button animated fadeIn"><a href="http://www.onlyconnect.london/">Visit OC</a></div>
       {{/if}}
       <div class="button animated fadeIn">{{> loginButtons}}</div>
     </div>
-    <div class="animated {{adminPanelClass}} admin-panel">
+<!--     <div class="animated {{adminPanelClass}} admin-panel">
       {{> adminPanel}}
-    </div>
+    </div> -->
     <a href="live"><img class="inspire" src="dontlookback.png"></a>
   </div>
 </template>

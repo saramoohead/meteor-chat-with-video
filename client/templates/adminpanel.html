@@ -1,5 +1,9 @@
 <template name="adminPanel">
-  {{#if isAdminPanelOn}}
+  <div class="container">  
+    <header>
+      <a href="/"><img class="logo" src="/logo.png"></a><br>
+    </header>
+    <h2>Add New Challenge</h2>
     <form class="new-video">
       Challenge Title:
       <input type="text" name="challengeTitle" placeholder="Short challenge title here.">
@@ -12,11 +16,17 @@
       <input type="submit" value="Add new challenge">
     </form>
 
+    <h2>Add New Admin</h2>
     <form class="new-admin">
       New admin user:
       <input type="text" name="userName" placeholder="Type in exact username">
       <input type="submit" value="Add new admin user">
     </form>
+
+    <h2>Admin List</h2>
+    {{#each adminList}}
+      <p class="admin-list">{{username}} <button class="delete-admin">&times;</button></p>
+    {{/each}}
 
     <h2>Challenge List</h2>
     {{#each challengeList}}
@@ -32,15 +42,5 @@
       </li>
     {{/each}}
 
-    <h2>Admin List</h2>
-    {{#each adminList}}
-      <li>
-        <p>
-          {{username}}
-          <button class="delete-admin">&times;</button>
-        </p>
-      </li>
-    {{/each}}
-
-  {{/if}}
+  </div>
 </template>

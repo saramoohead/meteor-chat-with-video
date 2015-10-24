@@ -1,22 +1,26 @@
 <template name="comments">
 
-    {{#if currentUser}}
-      <form class="new-comment">
+    <form class="new-comment">
+      {{#if currentUser}}
         <input type="text" name="commentText" placeholder="What do you think of today's video?" />
-      </form>
-    {{/if}}
+      {{else}}
+        <input type="text" name="commentText" placeholder="Log in to participate in the conversation" />
+      {{/if}}
+    </form>
 
-  <h3>Featured comments</h3>
-  <ul>
-    {{#each featuredComments}}
-      <li>
-        <p>
-          &#9733; {{commentText}}
-          <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
-        </p>
-      </li>
-    {{/each}}
-  </ul>
+  {{#if featuredCommentsExist}}
+    <h3>Featured comments</h3>
+    <ul>
+      {{#each featuredComments}}
+        <li>
+          <p>
+            &#9733; {{commentText}}
+            <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
+          </p>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
 
   <h3>The Conversation</h3>
   <ul>

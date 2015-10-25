@@ -58,6 +58,14 @@ header a:visited {
   color: #ffffff;
 }
 
+.button a:link{
+  color: #ffffff;
+}
+
+.button a:visited{
+  color: #ffffff;
+}
+
 .logo {
   margin: 10px;
   height: 30px;
@@ -192,6 +200,17 @@ li .no-comments {
   font-size: 1em;
   border: none;
   position: relative;
+}
+
+.triangle-right {
+  position: fixed;
+  top: 350px;
+  right: 40px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-left: 35px solid black;
+  border-bottom: 20px solid transparent;
 }
 
 @media only screen and (max-width: 600px) {

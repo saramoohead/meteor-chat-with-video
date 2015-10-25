@@ -6,6 +6,13 @@ Template.comments.helpers({
             return commentList;
         }
     },
+    noCommentsExist: function () {
+        var currentChallenge = this._id;
+        var commentList = Comments.find({ challengeId: currentChallenge });
+        if (commentList.count() === 0) {
+            return true;
+        }
+    },
     featuredComments: function () {
         var currentChallenge = this._id;
         var commentList = Comments.find({ challengeId: currentChallenge, featured: true }, { sort: { createdAt: -1 } });

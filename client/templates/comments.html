@@ -23,6 +23,11 @@
   {{/if}}
 
   <h3>The Conversation</h3>
+  {{#if noCommentsExist}}
+  <ul>
+    <li><p class="no-comments">No comments yet. Be the first.</p></li>
+  </ul>
+  {{/if}}
   <ul>
     {{#each commentList}}
       <li>

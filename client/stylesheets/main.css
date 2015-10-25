@@ -174,6 +174,11 @@ li .user-details {
   color: #9f9f9f;
 }
 
+li .no-comments {
+  color: #9f9f9f;
+  margin-bottom: 60px;
+}
+
 .admin-logo {
   height: 10px;
   padding: 0 5px 0 0;

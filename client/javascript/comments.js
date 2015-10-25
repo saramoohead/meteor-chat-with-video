@@ -23,7 +23,7 @@ Template.comments.helpers({
     createdAtModified: function () {
         var timestamp = this.createdAt;
         if (timestamp) {
-            return timestamp.toString().slice(15,25);
+            return timestamp.toString().slice(0,10) + " " + timestamp.toString().slice(16,25);
         }
     },
     isOwner: function () {

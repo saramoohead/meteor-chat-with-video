@@ -136,11 +136,11 @@ form {
 }
 
 input {
-  box-sizing: border-box;
   background: transparent;
   border: none;
   width: 100%;
   font-size: .8em;
+  padding-top: 10px;
 }
 
 input:focus{

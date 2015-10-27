@@ -3,6 +3,7 @@
     <form class="new-comment">
       {{#if currentUser}}
         <input type="text" name="commentText" placeholder="What do you think of today's video?" />
+        <input type="submit" value="Post comment">
       {{else}}
         <input type="text" name="commentText" placeholder="Log in to participate in the conversation" />
       {{/if}}

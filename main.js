@@ -44,6 +44,7 @@ if (Meteor.isServer) {
         },
         job: function() {
             // console.log("********insideSyncedCronAdd");
+            Meteor.call("sendGoroostNotification");
         }
     });
 

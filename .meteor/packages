@@ -10,3 +10,4 @@ accounts-password
 alanning:roles
 iron:router
 percolate:synced-cron
+http

@@ -11,3 +11,4 @@ alanning:roles
 iron:router
 percolate:synced-cron
 http
+summernote:summernote

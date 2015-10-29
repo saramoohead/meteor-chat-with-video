@@ -1,3 +1,12 @@
+Template.adminPanel.rendered = function() {
+    var template = this;
+    $('#summernote').summernote({
+        height: 400,
+        maxHeight:600,
+        minHeight:250,
+    });
+};
+
 Template.adminPanel.helpers({
     isAdminPanelOn: function () {
         if (Session.get("adminPanelStatus") == "admin on") {
@@ -28,16 +37,18 @@ Template.adminPanel.events({
     "submit .new-video": function (event) {
         event.preventDefault();
 
+        var sHTML = $('#summernote').code();
+
         var challengeDate = event.target.challengeDate.value;
         var challengeTitle = event.target.challengeTitle.value;
-        var challengeDescription = event.target.challengeDescription.value;
+        var challengeDescription = sHTML;
         var challengeVideoLink = event.target.challengeVideoLink.value;
 
         Meteor.call("addChallenge", challengeDate, challengeTitle, challengeDescription, challengeVideoLink);
 
         event.target.challengeDate.value = "";
         event.target.challengeTitle.value = "";
-        event.target.challengeDescription.value = "";
+        // event.target.challengeDescription.value = "";
         event.target.challengeVideoLink.value = "";
     },
     "submit .new-admin": function (event) {

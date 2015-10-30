@@ -12,3 +12,4 @@ iron:router
 percolate:synced-cron
 http
 summernote:summernote
+vazco:universe-html-purifier

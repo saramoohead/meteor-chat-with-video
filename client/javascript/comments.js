@@ -1,20 +1,3 @@
-Template.comments.rendered = function() {
-    var template = this;
-    $('#summernote').summernote({
-        height: 150,
-        maxHeight:100,
-        minHeight:200,
-        toolbar: [
-        //[groupname, [button list]]
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough']],
-            ['color', ['color']],
-            ['height', ['height']],
-            ['insert', ['link', 'picture']]
-        ]
-    });
-};
-
 Template.comments.helpers({
     commentList: function () {
         var currentChallenge = this._id;

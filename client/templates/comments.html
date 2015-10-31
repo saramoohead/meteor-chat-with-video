@@ -1,13 +1,6 @@
 <template name="comments">
 
-    <form class="new-comment">
-      {{#if currentUser}}
-        <div id="summernote"></div>
-        <input type="submit" value="Post comment here.">
-      {{else}}
-        <input type="text" name="commentText" placeholder="Log in to participate in the conversation" />
-      {{/if}}
-    </form>
+  {{> newcomments}}
 
   {{#if featuredCommentsExist}}
     <h3>Featured comments</h3>
@@ -52,4 +45,15 @@
       </li>
     {{/each}}
   </ul>
+</template>
+
+<template name="newcomments">
+    <form class="new-comment">
+      {{#if currentUser}}
+        <div id="summernote"></div>
+        <input type="submit" value="Post comment here.">
+      {{else}}
+        <input type="text" name="commentText" placeholder="Log in to participate in the conversation" />
+      {{/if}}
+    </form>
 </template>

@@ -2,8 +2,8 @@
 
     <form class="new-comment">
       {{#if currentUser}}
-        <input type="text" name="commentText" placeholder="What do you think of today's video?" />
-        <input type="submit" value="Post comment">
+        <div id="summernote"></div>
+        <input type="submit" value="Post comment here.">
       {{else}}
         <input type="text" name="commentText" placeholder="Log in to participate in the conversation" />
       {{/if}}
@@ -15,7 +15,7 @@
       {{#each featuredComments}}
         <li>
           <p>
-            &#9733; {{commentText}}
+            &#9733; {{{commentText}}}
             <p class="user-details">Posted by: {{username}} at {{createdAtModified}}</p>
           </p>
         </li>
@@ -36,7 +36,7 @@
           {{#if commenterIsAdmin}}
             <img class="admin-logo" src="/logo.png">
           {{/if}}
-          {{commentText}}
+          {{{commentText}}}
           {{#if isOwner}}
             <button class="delete-button comment-button">&times;</button>
           {{/if}}

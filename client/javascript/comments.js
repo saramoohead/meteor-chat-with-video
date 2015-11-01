@@ -1,3 +1,26 @@
+Template.comments.rendered = function() {
+    var template = this;
+    $('#summernote').summernote({
+        height: 150,
+        maxHeight:100,
+        minHeight:200,
+        dialogsInBody: true,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough']],
+            ['color', ['color']],
+            ['height', ['height']],
+            ['insert', ['link']]
+        ],
+        onCreateLink: function (url) {
+            if (url.indexOf('http://') !== 0) {
+                url = 'http://' + url;
+            }
+            return url;
+        }
+    });
+};
+
 Template.comments.helpers({
     commentList: function () {
         var currentChallenge = this._id;
@@ -60,16 +83,6 @@ Template.comments.helpers({
 });
 
 Template.comments.events({
-    "submit .new-comment": function (event) {
-        event.preventDefault();
-
-        var commentText = $('#summernote').code();
-        var currentChallenge = this._id;
-        if(commentText) {
-            Meteor.call("addComment", commentText, currentChallenge);
-        }
-
-    },
     "click .delete-button": function () {
         var commentId = this._id;
         swal({
@@ -91,6 +104,16 @@ Template.comments.events({
     "click .feature-button": function () {
         var commentId = this._id;
         Meteor.call("featureCommentToggle", commentId);
+    },
+    "submit .new-comment": function (event) {
+        event.preventDefault();
+
+        var commentText = $('#summernote').code().trim();
+        var currentChallenge = this._id;
+        if(commentText !== "") {
+            Meteor.call("addComment", commentText, currentChallenge);
+        }
+        $('#summernote').code('');
     }
 });
 

@@ -13,3 +13,4 @@ percolate:synced-cron
 http
 summernote:summernote
 vazco:universe-html-purifier
+force-ssl

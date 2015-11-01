@@ -50,9 +50,9 @@ header a:visited {
   display:inline-block;
   margin: 0 auto;
   background: #000000;
-  width: 49%;
-  height: 50px;
-  line-height: 50px;
+  width: 30%;
+  height: 60px;
+  line-height: 60px;
   vertical-align: middle;
   text-align: center;
   color: #ffffff;
@@ -68,7 +68,7 @@ header a:visited {
 
 .logo {
   margin: 10px;
-  height: 30px;
+  height: 45px;
   text-align: left;
 }
 
@@ -204,7 +204,7 @@ li .no-comments {
 
 .triangle-right {
   position: fixed;
-  top: 300px;
+  top: 275px;
   right: 40px;
   width: 0;
   height: 0;

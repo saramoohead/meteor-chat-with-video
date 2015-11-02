@@ -65,7 +65,7 @@ if (Meteor.isClient) {
     Meteor.subscribe("adminPanelUserData");
     Meteor.subscribe("challenges");
 
-    Template.welcome.helpers({
+    Template.header.helpers({
         adminPanelAccess: function () {
             var user = Meteor.user();
             if (user) {

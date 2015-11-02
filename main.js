@@ -100,8 +100,8 @@ if (Meteor.isClient) {
     });
 
     Template.about.events({
-        "onclick .roost-prompt": function(){
-            console.log("prompt***");
+        "click .roost-prompt": function (e) {
+            e.preventDefault();
             _roost.prompt();
         }
     });

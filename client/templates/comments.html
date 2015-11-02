@@ -1,6 +1,10 @@
 <template name="comments">
 
+{{#if currentUser}}
   {{> newcomment}}
+{{else}}
+  <p> Please log in to join the conversation </p>
+{{/if}}
 
   {{#if featuredCommentsExist}}
     <h3>Featured comments</h3>
@@ -50,12 +54,8 @@
 <template name="newcomment">
   <div>
     <form class="new-comment">
-      {{#if userLoaded}}
-        <div id="summernote"></div>
-        <input type="submit" value="Post comment here.">
-      {{else}}
-        <input type="text" name="commentText" placeholder="Log in to participate in the conversation" />
-      {{/if}}
+      <div id="summernote"></div>
+      <input type="submit" value="Post comment here.">
     </form>
   </div>
 </template>

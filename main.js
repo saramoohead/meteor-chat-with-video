@@ -74,19 +74,6 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.newcomment.helpers({
-        userLoaded: function () {
-            console.log("userLoaded");
-            var user = Meteor.user();
-            if (user) {
-                // Meteor.call("buildSummernoteForm");
-                return true;
-            } else {
-                $('#summernote').destroy();
-            }
-        }
-    });
-
     // if adminPanelOn (true or false)
     // set Session as false to begin
 

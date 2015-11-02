@@ -9,6 +9,10 @@ Router.route('/admin', {
     template: 'adminPanel'
 });
 
+Router.route('about', {
+    template: 'about'
+});
+
 Router.route('live', {
     template: 'challenge',
     data: function(){
@@ -92,6 +96,12 @@ if (Meteor.isClient) {
         },
         "click .inspire": function(){
             document.getElementById("welcome").className="container slideUpOut";
+        }
+    });
+
+    Template.about.events({
+        "onclick .roost-prompt": function(){
+            console.log("prompt***");
             _roost.prompt();
         }
     });

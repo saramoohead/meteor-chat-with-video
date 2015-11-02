@@ -71,12 +71,18 @@ if (Meteor.isClient) {
             if (user) {
                 return user.adminPanel;
             }
-        },
-        adminPanelClass: function () {
-            if (Session.get("adminPanelStatus") == "admin off" || !Session.get("adminPanelStatus")) {
-                return "slideOutUp";
+        }
+    });
+
+    Template.newcomment.helpers({
+        userLoaded: function () {
+            console.log("userLoaded");
+            var user = Meteor.user();
+            if (user) {
+                // Meteor.call("buildSummernoteForm");
+                return true;
             } else {
-                return "slideInDown";
+                $('#summernote').destroy();
             }
         }
     });

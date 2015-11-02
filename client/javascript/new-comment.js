@@ -1,24 +1,5 @@
 Template.newcomment.rendered = function() {
-    var template = this;
-    $('#summernote').summernote({
-        height: 150,
-        maxHeight:100,
-        minHeight:200,
-        dialogsInBody: true,
-        toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough']],
-            ['color', ['color']],
-            ['height', ['height']],
-            ['insert', ['link']]
-        ],
-        onCreateLink: function (url) {
-            if (url.indexOf('http://') !== 0) {
-                url = 'http://' + url;
-            }
-            return url;
-        }
-    });
+    Meteor.call("buildSummernoteForm");
 };
 
 Template.newcomment.events({
